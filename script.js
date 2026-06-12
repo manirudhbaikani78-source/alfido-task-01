@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loader.style.opacity = '0';
         loader.style.visibility = 'hidden';
         document.body.style.overflowY = 'auto';
-    }, 1500);
+    }, 1200);
 
     // =========================================
     // 2. CUSTOM CURSOR
@@ -25,77 +25,64 @@ document.addEventListener('DOMContentLoaded', () => {
         cursorOutline.animate({
             left: `${posX}px`,
             top: `${posY}px`
-        }, { duration: 500, fill: "forwards" });
+        }, { duration: 250, fill: "forwards" });
     });
 
-    // =========================================
-    // 3. THEME & COLOR SETTINGS
-    // =========================================
-    const settingsBtn = document.querySelector('.theme-settings-btn');
-    const themeDropdown = document.querySelector('.theme-dropdown');
-    const themeToggle = document.getElementById('theme-toggle');
-    const html = document.documentElement;
-    const themeIcon = themeToggle.querySelector('i');
-    const colorBtns = document.querySelectorAll('.color-btn');
-
-    // Toggle dropdown
-    settingsBtn.addEventListener('click', () => {
-        themeDropdown.classList.toggle('active');
-    });
-
-    // Close dropdown on outside click
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.theme-selector-container')) {
-            themeDropdown.classList.remove('active');
-        }
-    });
-
-    // Load saved settings
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    const savedColor = localStorage.getItem('color') || 'purple';
-    html.setAttribute('data-theme', savedTheme);
-    html.setAttribute('data-color', savedColor);
-    updateThemeIcon(savedTheme);
-    updateActiveColorBtn(savedColor);
-
-    // Theme (Dark/Light) Toggle
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = html.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        html.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateThemeIcon(newTheme);
-    });
-
-    // Color Pickers
-    colorBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const newColor = btn.getAttribute('data-color-val');
-            html.setAttribute('data-color', newColor);
-            localStorage.setItem('color', newColor);
-            updateActiveColorBtn(newColor);
-            updateParticlesColor(newColor); // Update canvas particles
+    // Make cursor respond dynamically to interactive components
+    function updateCursorListeners() {
+        const interactives = document.querySelectorAll('a, button, .color-btn, .social-icon, .nav-link, [role="button"]');
+        interactives.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursorOutline.style.width = '45px';
+                cursorOutline.style.height = '45px';
+                cursorOutline.style.backgroundColor = 'rgba(var(--active-rgb), 0.08)';
+                cursorOutline.style.borderColor = 'var(--active-color)';
+                cursorDot.style.transform = 'translate(-50%, -50%) scale(1.5)';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursorOutline.style.width = '30px';
+                cursorOutline.style.height = '30px';
+                cursorOutline.style.backgroundColor = 'transparent';
+                cursorOutline.style.borderColor = 'var(--active-color)';
+                cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
+            });
         });
+
+        // Hide custom cursor over form text inputs for standard native precision
+        const textControls = document.querySelectorAll('input, textarea, select');
+        textControls.forEach(ctrl => {
+            ctrl.addEventListener('mouseenter', () => {
+                cursorDot.style.opacity = '0';
+                cursorOutline.style.opacity = '0';
+            });
+            ctrl.addEventListener('mouseleave', () => {
+                cursorDot.style.opacity = '1';
+                cursorOutline.style.opacity = '1';
+            });
+        });
+    }
+
+    updateCursorListeners();
+
+    // Hide custom cursor when mouse leaves viewport window
+    document.addEventListener('mouseleave', () => {
+        cursorDot.style.opacity = '0';
+        cursorOutline.style.opacity = '0';
+    });
+    document.addEventListener('mouseenter', () => {
+        cursorDot.style.opacity = '1';
+        cursorOutline.style.opacity = '1';
     });
 
-    function updateThemeIcon(theme) {
-        if (theme === 'dark') {
-            themeIcon.classList.remove('fa-sun');
-            themeIcon.classList.add('fa-moon');
-        } else {
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
-        }
-    }
-
-    function updateActiveColorBtn(color) {
-        colorBtns.forEach(b => b.classList.remove('active'));
-        const activeBtn = document.querySelector(`.color-btn[data-color-val="${color}"]`);
-        if(activeBtn) activeBtn.classList.add('active');
-    }
+    // =========================================
+    // 3. THEME & COLOR INITIALIZATION
+    // =========================================
+    const html = document.documentElement;
+    html.setAttribute('data-theme', 'dark');
+    html.setAttribute('data-color', 'emerald');
 
     // =========================================
-    // 4. MOBILE MENU & STICKY NAVBAR
+    // 4. MOBILE MENU & FLOATING NAVBAR SCROLL STATE
     // =========================================
     const navbar = document.querySelector('.navbar');
     const mobileBtn = document.querySelector('.mobile-menu-btn');
@@ -103,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileLinks = document.querySelectorAll('.mobile-link');
 
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) navbar.classList.add('scrolled');
+        if (window.scrollY > 40) navbar.classList.add('scrolled');
         else navbar.classList.remove('scrolled');
     });
 
@@ -126,9 +113,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================
     const typedTextSpan = document.querySelector(".typing-text");
     const cursorSpan = document.querySelector(".cursor");
-    const textArray = ["Full Stack Developer", "Frontend Developer", "UI/UX Enthusiast", "JavaScript Developer"];
-    const typingDelay = 100;
-    const erasingDelay = 50;
+    const textArray = ["Frontend Developer", "Web Designer", "Responsive Layout Specialist", "UI Developer"];
+    const typingDelay = 80;
+    const erasingDelay = 40;
     const newTextDelay = 2000;
     let textArrayIndex = 0;
     let charIndex = 0;
@@ -154,13 +141,13 @@ document.addEventListener('DOMContentLoaded', () => {
             cursorSpan.classList.remove("typing");
             textArrayIndex++;
             if(textArrayIndex >= textArray.length) textArrayIndex = 0;
-            setTimeout(type, typingDelay + 1100);
+            setTimeout(type, typingDelay + 1000);
         }
     }
-    setTimeout(type, 2000);
+    setTimeout(type, 1500);
 
     // =========================================
-    // 6. SCROLL REVEAL & SKILL PROGRESS
+    // 6. SCROLL REVEAL & SKILL PROGRESS BARS
     // =========================================
     const revealElements = document.querySelectorAll('.reveal');
     const sections = document.querySelectorAll('.section');
@@ -170,38 +157,54 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
-                if (entry.target.classList.contains('skill-card')) {
-                    const progressBar = entry.target.querySelector('.progress-bar');
-                    const progress = entry.target.getAttribute('data-progress');
-                    progressBar.style.width = `${progress}%`;
+                if (entry.target.classList.contains('skills-category-col')) {
+                    const skillItems = entry.target.querySelectorAll('.skill-item');
+                    skillItems.forEach(item => {
+                        const progressBar = item.querySelector('.skill-bar-fill');
+                        const progress = item.getAttribute('data-progress');
+                        if (progressBar && progress) {
+                            progressBar.style.width = `${progress}%`;
+                        }
+                    });
                 }
             }
         });
     };
-    const revealObserver = new IntersectionObserver(revealCallback, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+    const revealObserver = new IntersectionObserver(revealCallback, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
     revealElements.forEach(el => revealObserver.observe(el));
 
-    // Active Navigation Links
+    // Active Navigation scroll tracking
     window.addEventListener('scroll', () => {
         let current = '';
         sections.forEach(section => {
-            if (scrollY >= (section.offsetTop - section.clientHeight / 3)) {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.scrollY >= (sectionTop - sectionHeight / 3)) {
                 current = section.getAttribute('id');
             }
         });
+        
         navLinks.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href').includes(current)) link.classList.add('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+
+        mobileLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
         });
     });
 
-
     // =========================================
-    // 8. BACK TO TOP BUTTON
+    // 7. BACK TO TOP BUTTON
     // =========================================
     const backToTopBtn = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 500) backToTopBtn.classList.add('active');
+        if (window.scrollY > 400) backToTopBtn.classList.add('active');
         else backToTopBtn.classList.remove('active');
     });
     backToTopBtn.addEventListener('click', () => {
@@ -209,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // =========================================
-    // 9. CONTACT FORM VALIDATION
+    // 8. CONTACT FORM VALIDATION
     // =========================================
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
@@ -239,19 +242,21 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isValid) {
                 const btn = contactForm.querySelector('.submit-btn');
                 const originalText = btn.innerHTML;
-                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Transmitting...';
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending message...';
+                btn.disabled = true;
                 
                 setTimeout(() => {
                     btn.innerHTML = originalText;
+                    btn.disabled = false;
                     contactForm.reset();
                     const successMsg = document.querySelector('.form-success');
                     successMsg.classList.add('active');
                     setTimeout(() => successMsg.classList.remove('active'), 5000);
-                }, 2000);
+                }, 1800);
             }
         });
 
-        // Add event listener to remove error state on input
+        // Clear error indicators as the user types
         const allInputs = contactForm.querySelectorAll('input, textarea');
         allInputs.forEach(input => {
             input.addEventListener('input', () => {
@@ -261,33 +266,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =========================================
-    // 10. DYNAMIC FOOTER YEAR
+    // 9. DYNAMIC FOOTER YEAR
     // =========================================
-    document.getElementById('year').textContent = new Date().getFullYear();
+    const footerYear = document.getElementById('year');
+    if (footerYear) {
+        footerYear.textContent = new Date().getFullYear();
+    }
 
     // =========================================
-    // 11. BACKGROUND PARTICLES (Canvas)
+    // 10. BACKGROUND PARTICLES (Canvas)
     // =========================================
     const canvas = document.getElementById('particles-bg');
     const ctx = canvas.getContext('2d');
     let particlesArray = [];
     
-    // Color mapping
-    const colorsMap = {
-        'purple': 'rgba(127, 0, 255, 0.4)',
-        'cyan': 'rgba(0, 212, 255, 0.4)',
-        'red': 'rgba(255, 0, 76, 0.4)',
-        'pink': 'rgba(255, 105, 180, 0.4)',
-        'lightgreen': 'rgba(144, 238, 144, 0.4)',
-        'gray': 'rgba(107, 114, 128, 0.4)'
-    };
-    
-    let particleColor = colorsMap[savedColor] || colorsMap['purple'];
-
-    function updateParticlesColor(colorKey) {
-        particleColor = colorsMap[colorKey] || colorsMap['purple'];
-        particlesArray.forEach(p => p.color = particleColor);
-    }
+    const particleColors = [
+        'rgba(0, 214, 143, 0.25)',  // Emerald Green
+        'rgba(245, 166, 35, 0.15)'   // Warm Amber
+    ];
 
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -300,9 +296,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     class Particle {
         constructor(x, y, directionX, directionY, size, color) {
-            this.x = x; this.y = y;
-            this.directionX = directionX; this.directionY = directionY;
-            this.size = size; this.color = color;
+            this.x = x; 
+            this.y = y;
+            this.directionX = directionX; 
+            this.directionY = directionY;
+            this.size = size; 
+            this.color = color;
         }
         draw() {
             ctx.beginPath();
@@ -313,21 +312,23 @@ document.addEventListener('DOMContentLoaded', () => {
         update() {
             if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
             if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
-            this.x += this.directionX; this.y += this.directionY;
+            this.x += this.directionX; 
+            this.y += this.directionY;
             this.draw();
         }
     }
 
     function initParticles() {
         particlesArray = [];
-        const numberOfParticles = (canvas.height * canvas.width) / 12000;
+        const numberOfParticles = (canvas.height * canvas.width) / 14000;
         for (let i = 0; i < numberOfParticles; i++) {
             let size = (Math.random() * 2) + 0.5;
             let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
             let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
-            let directionX = (Math.random() * 0.4) - 0.2;
-            let directionY = (Math.random() * 0.4) - 0.2;
-            particlesArray.push(new Particle(x, y, directionX, directionY, size, particleColor));
+            let directionX = (Math.random() * 0.3) - 0.15;
+            let directionY = (Math.random() * 0.3) - 0.15;
+            let randomColor = particleColors[Math.floor(Math.random() * particleColors.length)];
+            particlesArray.push(new Particle(x, y, directionX, directionY, size, randomColor));
         }
     }
 

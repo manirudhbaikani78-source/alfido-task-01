@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baikani Manirudh | Portfolio</title>
-    <meta name="description" content="Baikani Manirudh - Full Stack Developer & UI/UX Enthusiast Portfolio">
+    <meta name="description" content="Baikani Manirudh - Frontend Developer & UI/UX Specialist Portfolio">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Premium Fonts: Outfit for Display & Headings, Inter for legible Body copy -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -28,44 +29,22 @@
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
         <div class="blob blob-3"></div>
-        <div class="blob blob-4"></div>
     </div>
 
-    <!-- Navbar -->
-    <header class="navbar glass-nav">
+    <!-- Floating Navbar -->
+    <header class="navbar">
         <div class="nav-container">
             <a href="#home" class="logo">BM<span class="glow-dot">.</span></a>
             
             <nav class="nav-links">
                 <a href="#home" class="nav-link active">Home</a>
                 <a href="#about" class="nav-link">About</a>
+                <a href="#projects" class="nav-link">Projects</a>
                 <a href="#skills" class="nav-link">Skills</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </nav>
 
             <div class="nav-controls">
-                <div class="theme-selector-container">
-                    <button class="icon-btn theme-settings-btn" aria-label="Settings">
-                        <i class="fas fa-palette"></i>
-                    </button>
-                    <div class="theme-dropdown glass-card">
-                        <div class="theme-options">
-                            <span>Mode:</span>
-                            <button id="theme-toggle" class="icon-btn"><i class="fas fa-moon"></i></button>
-                        </div>
-                        <div class="color-options">
-                            <span>Color:</span>
-                            <div class="colors">
-                                <button class="color-btn active" data-color-val="purple" style="background: #7f00ff;"></button>
-                                <button class="color-btn" data-color-val="cyan" style="background: #00d4ff;"></button>
-                                <button class="color-btn" data-color-val="red" style="background: #ff004c;"></button>
-                                <button class="color-btn" data-color-val="pink" style="background: #ff69b4;"></button>
-                                <button class="color-btn" data-color-val="lightgreen" style="background: #90ee90;"></button>
-                                <button class="color-btn" data-color-val="gray" style="background: #6b7280;"></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <button class="mobile-menu-btn" aria-label="Menu">
                     <div class="hamburger"></div>
                 </button>
@@ -78,8 +57,8 @@
         <nav class="mobile-nav-links">
             <a href="#home" class="mobile-link">Home</a>
             <a href="#about" class="mobile-link">About</a>
-            <a href="#skills" class="mobile-link">Skills</a>
             <a href="#projects" class="mobile-link">Projects</a>
+            <a href="#skills" class="mobile-link">Skills</a>
             <a href="#contact" class="mobile-link">Contact</a>
         </nav>
     </div>
@@ -87,23 +66,33 @@
     <main>
         <!-- Hero Section -->
         <section id="home" class="hero section">
+            <div class="hero-slash"></div>
+            <div class="hero-slash-line"></div>
             <div class="hero-container">
                 <div class="hero-content reveal fade-right">
-                    <p class="greeting">Hello, world! I am</p>
-                    <h1 class="glitch" data-text="Baikani Manirudh">Baikani Manirudh</h1>
-                    <div class="typing-container">
-                        <span class="text-static">I am a </span>
-                        <span class="typing-text"></span><span class="cursor">&nbsp;</span>
+                    <!-- Glowing Emerald Availability Badge -->
+                    <div class="availability-badge">
+                        <span class="status-dot"></span>
+                        <span>Available for select projects</span>
                     </div>
-                    <p class="tagline">Crafting digital experiences through elegant code and futuristic design.</p>
+                    <p class="greeting">Hello, world! I am</p>
+                    <h1 class="glitch">Baikani Manirudh</h1>
+                    
+                    <!-- Amber Role Line with Decorative Bar -->
+                    <div class="role-line-container">
+                        <span class="role-text">Full Stack Developer</span>
+                        <div class="decorative-bar"></div>
+                    </div>
+                    
+                    <p class="tagline">Crafting modern digital products through clean code, structured logic, and premium interfaces.</p>
                     
                     <div class="hero-cta">
                         <a href="#contact" class="btn btn-primary glow-btn">
-                            <span>Hire Me</span>
+                            <span>Get in Touch</span>
                             <i class="fas fa-arrow-right"></i>
                         </a>
-                        <a href="#about" class="btn btn-secondary glass-btn">
-                            <span>Explore</span>
+                        <a href="#projects" class="btn btn-secondary">
+                            <span>Explore Work</span>
                         </a>
                     </div>
 
@@ -116,10 +105,11 @@
                 </div>
 
                 <div class="hero-image-wrapper reveal fade-left">
-                    <div class="profile-container glass">
-                        <div class="rotating-border"></div>
-                        <img src="image/profile.jpeg" alt="Baikani Manirudh" class="profile-img">
-                        <div class="image-glow"></div>
+                    <div class="profile-card">
+                        <div class="profile-border-glow"></div>
+                        <div class="profile-card-inner">
+                            <img src="image/profile 1.jpeg" alt="Baikani Manirudh" class="profile-img">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -128,7 +118,6 @@
                 <div class="mouse">
                     <div class="wheel"></div>
                 </div>
-                <div class="arrow"></div>
             </div>
         </section>
 
@@ -137,33 +126,137 @@
             <h2 class="section-title reveal fade-up">About <span class="accent">Me</span></h2>
             
             <div class="about-container">
-                <div class="about-image reveal fade-right glass">
-                    <img src="image/profile.jpeg" alt="Profile" class="hover-scale">
+                <div class="about-image reveal fade-right">
+                    <img src="image/profile 1.jpeg" alt="Profile">
                 </div>
                 
                 <div class="about-content reveal fade-left">
-                    <p class="bio glass-card">
+                    <p class="bio">
                         I am a passionate software developer dedicated to building high-performance, aesthetically pleasing digital solutions. My approach blends cutting-edge web technologies with a keen eye for minimalist, glassmorphism-inspired design.
                     </p>
                     
+                    <!-- Modernized Experience Timeline -->
                     <div class="timeline">
-                        <div class="timeline-item glass-card reveal fade-up">
-                            <div class="timeline-dot glow"></div>
-                            <h3>Education Goals</h3>
-                            <p>Striving for mastery in Computer Science and Advanced Web Technologies, continuously expanding my knowledge base through practical projects and rigorous study.</p>
-                        </div>
-                        
-                        <div class="timeline-item glass-card reveal fade-up" style="transition-delay: 0.1s;">
-                            <div class="timeline-dot glow"></div>
-                            <h3>Career Goals</h3>
-                            <p>Aiming to architect robust, scalable applications that push the boundaries of user experience while leading innovative development teams.</p>
+                        <div class="timeline-item reveal fade-up">
+                            <div class="timeline-dot"></div>
+                            <h3>Web Development Internship</h3>
+                            <p>Designed and built professional portfolio websites, high-conversion landing pages, and responsive page layouts, ensuring high quality, cross-device usability, and clean, semantic code.</p>
                         </div>
                     </div>
 
                     <div class="badges">
                         <span class="badge glass-card"><i class="fas fa-code"></i> Developer</span>
                         <span class="badge glass-card"><i class="fas fa-paint-brush"></i> Designer</span>
-                        <span class="badge glass-card"><i class="fas fa-rocket"></i> Innovator</span>
+                        <span class="badge glass-card"><i class="fas fa-rocket"></i> Layout Specialist</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects section">
+            <h2 class="section-title reveal fade-up">Featured <span class="accent">Projects</span></h2>
+            
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card reveal fade-up">
+                    <div class="project-window-header">
+                        <div class="window-dots">
+                            <span class="window-dot red"></span>
+                            <span class="window-dot yellow"></span>
+                            <span class="window-dot green"></span>
+                        </div>
+                        <div class="project-window-title">personal-portfolio</div>
+                    </div>
+                    <div class="project-visual">
+                        <div class="project-visual-inner">
+                            <i class="fas fa-id-card project-illustration-icon"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Professional Portfolio Website</h3>
+                        <p>A premium, interactive personal portfolio website featuring dark/light mode toggles, custom color themes, smooth CSS micro-animations, and responsive layouts.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML5</span>
+                            <span class="project-tag">CSS3</span>
+                            <span class="project-tag">JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/manirudhbaikani78-source" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i> Source
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card reveal fade-up" style="transition-delay: 0.1s;">
+                    <div class="project-window-header">
+                        <div class="window-dots">
+                            <span class="window-dot red"></span>
+                            <span class="window-dot yellow"></span>
+                            <span class="window-dot green"></span>
+                        </div>
+                        <div class="project-window-title">conversion-landing-page</div>
+                    </div>
+                    <div class="project-visual">
+                        <div class="project-visual-inner">
+                            <i class="fas fa-rocket project-illustration-icon"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>High-Conversion Landing Page</h3>
+                        <p>A modern, responsive landing page template featuring clean layout flows, optimized asset loading, sleek CSS grid elements, and interactive calls to action.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Responsive UI</span>
+                            <span class="project-tag">CSS Grid</span>
+                            <span class="project-tag">UX Design</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/manirudhbaikani78-source" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i> Source
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card reveal fade-up" style="transition-delay: 0.2s;">
+                    <div class="project-window-header">
+                        <div class="window-dots">
+                            <span class="window-dot red"></span>
+                            <span class="window-dot yellow"></span>
+                            <span class="window-dot green"></span>
+                        </div>
+                        <div class="project-window-title">grid-flexbox-layouts</div>
+                    </div>
+                    <div class="project-visual">
+                        <div class="project-visual-inner">
+                            <i class="fas fa-th-large project-illustration-icon"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Responsive UI Layout Templates</h3>
+                        <p>A collection of flexible, reusable dashboard layouts and layout components built using CSS Grid and Flexbox for seamless cross-device compatibility.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">CSS Flexbox</span>
+                            <span class="project-tag">CSS Grid</span>
+                            <span class="project-tag">Responsive</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/manirudhbaikani78-source" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i> Source
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -171,113 +264,143 @@
 
         <!-- Skills Section -->
         <section id="skills" class="skills section">
-            <h2 class="section-title reveal fade-up">My <span class="accent">Arsenal</span></h2>
+            <h2 class="section-title reveal fade-up">My <span class="accent">Expertise</span></h2>
             
-            <div class="skills-grid">
-                <div class="skill-card glass reveal fade-up" data-progress="95">
-                    <div class="skill-icon glow-text"><i class="fab fa-html5"></i></div>
-                    <h3>HTML5</h3>
-                    <div class="progress-container">
-                        <div class="progress-bar"></div>
+            <div class="skills-container-grid">
+                <!-- Category 1 -->
+                <div class="skills-category-col reveal fade-up">
+                    <h3 class="category-title"><i class="fas fa-code"></i> Frontend Core</h3>
+                    <div class="skills-list">
+                        <div class="skill-item glass-card" data-progress="95">
+                            <span class="skill-name">HTML5</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 0%;"></div></div>
+                        </div>
+                        <div class="skill-item glass-card" data-progress="90">
+                            <span class="skill-name">CSS3</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 0%;"></div></div>
+                        </div>
+                        <div class="skill-item glass-card" data-progress="85">
+                            <span class="skill-name">JavaScript</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 0%;"></div></div>
+                        </div>
                     </div>
-                    <span class="progress-text">95%</span>
                 </div>
 
-                <div class="skill-card glass reveal fade-up" style="transition-delay: 0.1s;" data-progress="90">
-                    <div class="skill-icon glow-text"><i class="fab fa-css3-alt"></i></div>
-                    <h3>CSS3</h3>
-                    <div class="progress-container">
-                        <div class="progress-bar"></div>
+                <!-- Category 2 -->
+                <div class="skills-category-col reveal fade-up" style="transition-delay: 0.1s;">
+                    <h3 class="category-title"><i class="fas fa-layer-group"></i> Frameworks</h3>
+                    <div class="skills-list">
+                        <div class="skill-item glass-card" data-progress="75">
+                            <span class="skill-name">React.js</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 0%;"></div></div>
+                        </div>
+                        <div class="skill-item glass-card" data-progress="80">
+                            <span class="skill-name">Vite</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 0%;"></div></div>
+                        </div>
+                        <div class="skill-item glass-card" data-progress="70">
+                            <span class="skill-name">TailwindCSS</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 0%;"></div></div>
+                        </div>
                     </div>
-                    <span class="progress-text">90%</span>
                 </div>
 
-                <div class="skill-card glass reveal fade-up" style="transition-delay: 0.2s;" data-progress="85">
-                    <div class="skill-icon glow-text"><i class="fab fa-js"></i></div>
-                    <h3>JavaScript</h3>
-                    <div class="progress-container">
-                        <div class="progress-bar"></div>
+                <!-- Category 3 -->
+                <div class="skills-category-col reveal fade-up" style="transition-delay: 0.2s;">
+                    <h3 class="category-title"><i class="fas fa-crop-alt"></i> UI & Design</h3>
+                    <div class="skills-list">
+                        <div class="skill-item glass-card" data-progress="95">
+                            <span class="skill-name">Responsive Design</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 0%;"></div></div>
+                        </div>
+                        <div class="skill-item glass-card" data-progress="90">
+                            <span class="skill-name">CSS Grid / Flexbox</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 0%;"></div></div>
+                        </div>
+                        <div class="skill-item glass-card" data-progress="85">
+                            <span class="skill-name">UI Prototyping</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 0%;"></div></div>
+                        </div>
                     </div>
-                    <span class="progress-text">85%</span>
                 </div>
 
-                <div class="skill-card glass reveal fade-up" style="transition-delay: 0.3s;" data-progress="80">
-                    <div class="skill-icon glow-text"><i class="fab fa-git-alt"></i></div>
-                    <h3>Git/GitHub</h3>
-                    <div class="progress-container">
-                        <div class="progress-bar"></div>
+                <!-- Category 4 -->
+                <div class="skills-category-col reveal fade-up" style="transition-delay: 0.3s;">
+                    <h3 class="category-title"><i class="fas fa-tools"></i> Tools & Dev</h3>
+                    <div class="skills-list">
+                        <div class="skill-item glass-card" data-progress="85">
+                            <span class="skill-name">Git & GitHub</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 0%;"></div></div>
+                        </div>
+                        <div class="skill-item glass-card" data-progress="90">
+                            <span class="skill-name">Chrome DevTools</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 0%;"></div></div>
+                        </div>
+                        <div class="skill-item glass-card" data-progress="95">
+                            <span class="skill-name">VS Code</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 0%;"></div></div>
+                        </div>
                     </div>
-                    <span class="progress-text">80%</span>
-                </div>
-
-                <div class="skill-card glass reveal fade-up" style="transition-delay: 0.4s;" data-progress="95">
-                    <div class="skill-icon glow-text"><i class="fas fa-mobile-alt"></i></div>
-                    <h3>Responsive Design</h3>
-                    <div class="progress-container">
-                        <div class="progress-bar"></div>
-                    </div>
-                    <span class="progress-text">95%</span>
                 </div>
             </div>
         </section>
 
-
         <!-- Contact Section -->
         <section id="contact" class="contact section">
-            <h2 class="section-title reveal fade-up">Initiate <span class="accent">Connection</span></h2>
+            <h2 class="section-title reveal fade-up">Get In <span class="accent">Touch</span></h2>
             
             <div class="contact-container">
-                <div class="contact-info reveal fade-right glass">
-                    <h3>Let's Build the Future</h3>
-                    <p>Open for opportunities, collaborations, and discussions about the next big thing.</p>
+                <div class="contact-info glass-card reveal fade-right">
+                    <h3>Let's work together</h3>
+                    <p>Open for opportunities, collaborations, and discussions about your next project or role.</p>
                     
                     <div class="contact-links">
-                        <a href="mailto:manirudhbaikani78@gamil.com" class="contact-link glass-btn">
+                        <a href="mailto:manirudhbaikani78@gamil.com" class="contact-link">
                             <i class="fas fa-envelope"></i> manirudhbaikani78@gamil.com
                         </a>
-                        <a href="https://github.com/manirudhbaikani78-source" target="_blank" class="contact-link glass-btn">
+                        <a href="https://github.com/manirudhbaikani78-source" target="_blank" class="contact-link">
                             <i class="fab fa-github"></i> GitHub
                         </a>
-                        <a href="https://www.linkedin.com/in/baikani-manirudh-8382a7327/" target="_blank" class="contact-link glass-btn">
+                        <a href="https://www.linkedin.com/in/baikani-manirudh-8382a7327/" target="_blank" class="contact-link">
                             <i class="fab fa-linkedin"></i> LinkedIn
                         </a>
-                        <a href="#" target="_blank" class="contact-link glass-btn">
-                            <i class="fab fa-twitter"></i> Twitter/X
+                        <a href="#" target="_blank" class="contact-link">
+                            <i class="fab fa-twitter"></i> Twitter / X
                         </a>
-                        <a href="#" target="_blank" class="contact-link glass-btn">
+                        <a href="#" target="_blank" class="contact-link">
                             <i class="fab fa-instagram"></i> Instagram
                         </a>
                     </div>
                 </div>
 
-                <div class="contact-form-container reveal fade-left glass">
+                <div class="contact-form-container glass-card reveal fade-left">
                     <form id="contact-form" class="form" novalidate>
                         <div class="input-group">
                             <input type="text" id="name" name="name" required placeholder=" " autocomplete="off">
-                            <label for="name">Identifier (Name)</label>
-                            <span class="error-msg">Please provide a valid identifier.</span>
+                            <label for="name">Your Name</label>
+                            <span class="error-msg">Please provide your name.</span>
                         </div>
                         
                         <div class="input-group">
                             <input type="email" id="email" name="email" required placeholder=" " autocomplete="off">
-                            <label for="email">Comms Link (Email)</label>
-                            <span class="error-msg">Please provide a valid comms link.</span>
+                            <label for="email">Email Address</label>
+                            <span class="error-msg">Please provide a valid email address.</span>
                         </div>
                         
                         <div class="input-group">
                             <textarea id="message" name="message" required placeholder=" " rows="5"></textarea>
-                            <label for="message">Transmission (Message)</label>
-                            <span class="error-msg">Transmission cannot be empty.</span>
+                            <label for="message">Your Message</label>
+                            <span class="error-msg">Your message cannot be empty.</span>
                         </div>
                         
                         <button type="submit" class="btn btn-primary submit-btn glow-btn">
-                            <span class="btn-text">Send Transmission</span>
+                            <span class="btn-text">Send Message</span>
                             <i class="fas fa-paper-plane"></i>
                         </button>
                         
-                        <div class="form-success glass-card">
+                        <div class="form-success">
                             <i class="fas fa-check-circle"></i>
-                            <p>Transmission received successfully.</p>
+                            <p>Your message has been sent successfully.</p>
                         </div>
                     </form>
                 </div>
@@ -285,9 +408,9 @@
         </section>
     </main>
 
-    <footer class="footer glass-nav">
+    <footer class="footer">
         <div class="footer-content">
-            <p>&copy; <span id="year"></span> Baikani Manirudh. Crafted for the future.</p>
+            <p>&copy; <span id="year"></span> Baikani Manirudh. All rights reserved.</p>
             <div class="footer-social">
                 <a href="https://github.com/manirudhbaikani78-source" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/baikani-manirudh-8382a7327/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
@@ -295,7 +418,7 @@
         </div>
     </footer>
 
-    <button id="back-to-top" class="glass-btn glow-btn" aria-label="Back to Top">
+    <button id="back-to-top" class="btn btn-primary glow-btn" aria-label="Back to Top">
         <i class="fas fa-chevron-up"></i>
     </button>
 
